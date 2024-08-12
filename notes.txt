@@ -1,0 +1,50 @@
+To avoid this issue in the future, you can address it in the following ways:
+
+    Enable the zip PHP Extension:
+        Open your php.ini file located at C:\xampp\php\php.ini.
+        Search for the line ;extension=zip.
+        Remove the semicolon (;) at the beginning of the line to uncomment it.
+        Save the file and restart your Apache server.
+
+    Install unzip or 7z:
+        If you're on Windows, you can install 7-Zip and add its installation directory to your system's PATH variable.
+        For unzip, you would need to download and install the appropriate package for your system, but it's generally more common to use 7-Zip on Windows.
+
+    Continue with Source Download:
+        If the fallback to source download is working, you can continue the installation process as-is. The project will still be set up correctly, but the installation might take a bit longer.
+
+Would you like more detailed instructions on any of these steps?
+
+// REST API
+# worked
+composer create-project laravel/laravel benion-laravel-api
+composer install
+php artisan key:generate
+
+# try this
+type NUL > database\database.sqlite
+# or this
+cd C:\Benion\Benion Programmings\PHP\benion-laravel-api\database
+type NUL > database.sqlite
+
+php artisan migrate
+
+# did not worked
+composer global require laravel/installer
+laravel new benion-laravel-api
+
+php artisan serve
+
+php artisan install:api
+php artisan make:model Customer --all
+php artisan make:model Invoice --all
+php artisan migrate:fresh --seed
+php artisan make:resource V1\CustomerResource
+php artisan make:resource V1\CustomerCollection
+php artisan make:resource V1\InvoiceResource
+php artisan make:resource V1\InvoiceCollection
+php artisan make:request V1\StoreCustomerRequest
+php artisan make:request V1\UpdateCustomerRequest
+composer require laravel/sanctum
+php artisan vendor:publish --provider='Laravel\Sanctum\SanctumServiceProvider
+php artisan migrate
